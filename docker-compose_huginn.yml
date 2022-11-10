@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  huginn:
+    image: huginn/huginn:latest
+    container_name: huginn
+    restart: always
+    ports:
+      - "3000:3000"  # 对外的 Web 端口
+    volumes:
+      - huginn-data:/var/lib/mysql  # 数据保存到 huginn-data 卷中
+    environment:
+      EMAIL_FROM_ADDRESS: "2938500754@qq.com"  # 发信人地址
+      TIME_ZONE: "Beijing"  # 时区一定要设正确！
+      SMTP_USER_NAME: "none"
+      SMTP_PASSWORD: "none"
+      SMTP_PORT: "25"
+      SMTP_SERVER: "mail"
+      SMTP_AUTENTICATION: "none"  # 使用自建的 smtp 服务，无需验证
+      SMTP_ENABLE_STARTTLS_AUTO: "true"
+
+  mail:
+    image: namshi/smtp
+    restart: always
+    environment:
+      RELAY_NETWORKS: :0.0.0.0/0  # 允许任何人发送邮件
+
+volumes:
+  huginn-data:  # 创建名为 huginn-date 的数据卷
