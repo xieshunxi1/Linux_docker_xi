@@ -4,11 +4,11 @@ services:
     image: wangqiru/ttrss:latest
     container_name: ttrss
     ports:
-      - 181:80
+      - 181:180
     environment:
       - SELF_URL_PATH=http://10.60.32.3:181 # please change to your own domain
       - DB_PASS=ttrssxi # use the same password defined in `database.postgres`
-      - ALLOW_PORTS=1200 # 加入这个配置,才能访问rsshub默认的1200
+      - ALLOW_PORTS=1200,181 # 加入这个配置,才能访问rsshub默认的1200
       - PUID=1000
       - PGID=1000
     volumes:
