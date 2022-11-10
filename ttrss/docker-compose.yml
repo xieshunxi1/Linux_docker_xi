@@ -29,14 +29,14 @@ services:
       - service_only
     restart: always
 
-  service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
-    image: wangqiru/opencc-api-server:latest
-    container_name: opencc
-    environment:
-      - NODE_ENV=production
-    networks:
-      - service_only
-    restart: always
+#   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
+#     image: wangqiru/opencc-api-server:latest
+#     container_name: opencc
+#     environment:
+#       - NODE_ENV=production
+#     networks:
+#       - service_only
+#     restart: always
 
   database.postgres:
     image: postgres:13-alpine
