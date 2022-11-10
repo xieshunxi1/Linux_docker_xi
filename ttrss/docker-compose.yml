@@ -40,7 +40,7 @@ services:
 
   database.postgres:
     image: postgres:13-alpine
-    container_name: postgres
+    container_name: ttrss.postgres
     environment:
       - POSTGRES_PASSWORD=ttrssxi # feel free to change the password
     volumes:
