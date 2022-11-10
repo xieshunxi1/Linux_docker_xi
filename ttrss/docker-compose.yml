@@ -21,13 +21,13 @@ services:
     tty: true
     restart: always
 
-  service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
-    image: wangqiru/mercury-parser-api:latest
-    container_name: mercury
-    networks:
-      - public_access
-      - service_only
-    restart: always
+#   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
+#     image: wangqiru/mercury-parser-api:latest
+#     container_name: mercury
+#     networks:
+#       - public_access
+#       - service_only
+#     restart: always
 
 #   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page
 #     image: wangqiru/opencc-api-server:latest
