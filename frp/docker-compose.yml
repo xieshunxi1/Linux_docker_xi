@@ -7,8 +7,8 @@ services:
     expose:
       - 5000
     volumes:
-      - ./config:/config
-      - ./log:/log
+      - ./config:/
+      - ./log:/
     extra_hosts:
 #     To visit host's port in a container,
 #     you should fill in the correct IP of your docker host.
