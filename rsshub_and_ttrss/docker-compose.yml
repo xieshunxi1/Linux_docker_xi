@@ -78,7 +78,7 @@ services:
       restart: always
       command:
         --requirepass "xi" #这一行是设置密码
-      privileged: true      #使用该参数，container内的root拥有真正的root权限
+#       privileged: true      #使用该参数，container内的root拥有真正的root权限
       volumes:
         - redis-data:/data
         
