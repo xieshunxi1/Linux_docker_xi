@@ -57,6 +57,7 @@ services:
         NODE_ENV: production
         CACHE_TYPE: redis
         REDIS_URL: 'redis://redis:6379/'
+        REDIS_PASS: 'xi'
 #         PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'
 #         PROXY_PROTOCOL: socks
 #         PROXY_HOST: xxxxrss
@@ -73,7 +74,6 @@ services:
   redis:
       image: redis:alpine  
       container_name: 'redis'
-      command:
       restart: always
       command:
         --requirepass "xi" #这一行是设置密码
