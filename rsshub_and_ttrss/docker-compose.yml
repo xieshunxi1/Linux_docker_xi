@@ -38,8 +38,8 @@ services:
     container_name: ttrss-mercury
     ports:
       - 3000:3000 # 开放端口给外部使用
-#     expose:
-#       - 3000
+    expose:
+      - 3001
     restart: always
     
 #   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page #繁体到中文插件，不需要的话可以删除
