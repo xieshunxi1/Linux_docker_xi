@@ -36,14 +36,14 @@ services:
       - 3000
     restart: always
     
-  service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page #繁体到中文插件，不需要的话可以删除
-    image: wangqiru/opencc-api-server:latest
-    container_name: ttrss-opencc
-    environment:
-      NODE_ENV: production
-    expose:
-      - 3000
-    restart: always  
+#   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page #繁体到中文插件，不需要的话可以删除
+#     image: wangqiru/opencc-api-server:latest
+#     container_name: ttrss-opencc
+#     environment:
+#       NODE_ENV: production
+#     expose:
+#       - 3000
+#     restart: always  
     
   service.rsshub:
     image: diygod/rsshub
@@ -54,26 +54,26 @@ services:
         - '1200:80'
     environment:
         NODE_ENV: production
-        CACHE_TYPE: redis
-        REDIS_URL: 'redis://redis:6379/'
-        PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'
+#         CACHE_TYPE: redis
+#         REDIS_URL: 'redis://redis:6379/'
+#         PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'
         PROXY_PROTOCOL: socks
         PROXY_HOST: xxxxrss
         PROXY_PORT: 1080
         PORT: 80
-    depends_on:
-        - redis
-        - browserless
+#     depends_on:
+#         - redis
+#         - browserless
         
-  browserless:
-      image: browserless/chrome
-      restart: always
+#   browserless:
+#       image: browserless/chrome
+#       restart: always
       
-  redis:
-      image: redis:alpine
-      restart: always
-      volumes:
-        - redis-data:/data
+#   redis:
+#       image: redis:alpine
+#       restart: always
+#       volumes:
+#         - redis-data:/data
         
 volumes:
     redis-data:
