@@ -11,6 +11,7 @@ services:
     restart: always
     ports:
       - 15432:5432 # 开放端口给外部使用
+      
   service.rss:
     image: wangqiru/ttrss:latest
     container_name: ttrss
@@ -34,6 +35,7 @@ services:
     expose:
       - 3000
     restart: always
+    
   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page #繁体到中文插件，不需要的话可以删除
     image: wangqiru/opencc-api-server:latest
     container_name: ttrss-opencc
@@ -42,13 +44,14 @@ services:
     expose:
       - 3000
     restart: always  
+    
   service.rsshub:
     image: diygod/rsshub
     restart: always
     expose:
       - 80
     ports:
-        - '55011:80'
+        - '1200:80'
     environment:
         NODE_ENV: production
         CACHE_TYPE: redis
@@ -61,13 +64,16 @@ services:
     depends_on:
         - redis
         - browserless
+        
   browserless:
       image: browserless/chrome
       restart: always
+      
   redis:
       image: redis:alpine
       restart: always
       volumes:
         - redis-data:/data
+        
 volumes:
     redis-data:
