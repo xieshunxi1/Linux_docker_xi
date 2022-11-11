@@ -75,7 +75,8 @@ services:
       container_name: 'redis'
       command:
       restart: always
-     
+      --requirepass "hPxyR4" #这一行是设置密码78
+      privileged: true      #使用该参数，container内的root拥有真正的root权限
       volumes:
         - redis-data:/data
         
