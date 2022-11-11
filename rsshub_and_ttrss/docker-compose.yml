@@ -55,10 +55,15 @@ services:
     ports:
         - 1200:80
     environment:
-        NODE_ENV: production
-        CACHE_TYPE: redis
-        REDIS_URL: 'redis://redis:6379/'
-        REDIS_PASS: 'xi'
+        - DB_HOST=database.postgres
+        - DB_PORT=5432
+        - DB_NAME=rsshub
+        - DB_USER=postgres
+        - DB_PASS=ttrssxi # 修改为上面设置的数据库密码
+#         NODE_ENV: production
+#         CACHE_TYPE: redis
+#         REDIS_URL: 'redis://redis:6379/'
+#         REDIS_PASS: 'xi'
 #         PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'
 #         PROXY_PROTOCOL: socks
 #         PROXY_HOST: xxxxrss
