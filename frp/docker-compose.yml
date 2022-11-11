@@ -4,6 +4,8 @@ services:
     image: snowdreamtech/frps:latest
     container_name: frpclient
     restart: always
+    expose:
+      - 5000
     volumes:
       - ./config:/frp/config
       - ./log:/frp/log
