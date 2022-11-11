@@ -16,10 +16,10 @@ services:
     image: wangqiru/ttrss:latest
     container_name: ttrss
     ports:
-      - 181:180 # 冒号之前是你需要访问的端口，后面的80不需要修改
+      - 181:80 # 冒号之前是你需要访问的端口，后面的80不需要修改
     environment:
       - SELF_URL_PATH=http://10.60.32.3:181/ # 修改为你自己的域名+端口
-      - ALLOW_PORTS=1200,180 # 加入这个配置,才能访问rsshub默认的1200
+      - ALLOW_PORTS=1200 # 加入这个配置,才能访问rsshub默认的1200
       - DB_HOST=database.postgres
       - DB_PORT=5432
       - DB_NAME=ttrss
