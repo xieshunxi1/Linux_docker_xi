@@ -71,8 +71,11 @@ services:
 #       restart: always
       
   redis:
-      image: redis:alpine
+      image: redis:alpine  
+      container_name: 'redis'
+      command:
       restart: always
+     
       volumes:
         - redis-data:/data
         
