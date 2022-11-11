@@ -83,6 +83,7 @@ services:
   
   mail:
     image: namshi/smtp
+    container_name: 'mail'
     restart: always
     environment:
       RELAY_NETWORKS: :0.0.0.0/0  # 允许任何人发送邮件
