@@ -60,6 +60,14 @@ services:
         CACHE_TYPE: redis
         REDIS_URL: 'redis://redis:6379/'
         REDIS_PASS: 'xi'
+        EMAIL_FROM_ADDRESS: "2938500754@qq.com"  # 发信人地址
+        TIME_ZONE: "Beijing"  # 时区一定要设正确！
+        SMTP_USER_NAME: "none"
+        SMTP_PASSWORD: "none"
+        SMTP_PORT: "25"
+        SMTP_SERVER: "mail"
+        SMTP_AUTENTICATION: "none"  # 使用自建的 smtp 服务，无需验证
+        SMTP_ENABLE_STARTTLS_AUTO: "true"
 #         PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'
 #         PROXY_PROTOCOL: socks
 #         PROXY_HOST: xxxxrss
@@ -72,6 +80,12 @@ services:
 #   browserless:
 #       image: browserless/chrome
 #       restart: always
+  
+  mail:
+    image: namshi/smtp
+    restart: always
+    environment:
+      RELAY_NETWORKS: :0.0.0.0/0  # 允许任何人发送邮件
       
   redis:
       image: redis:alpine  
