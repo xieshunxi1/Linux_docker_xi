@@ -31,12 +31,12 @@ services:
     restart: always
     command: sh -c 'sh /wait-for.sh database.postgres:5432 -- php /configure-db.php && exec s6-svscan /etc/s6/'
     
-#   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
-#     image: wangqiru/mercury-parser-api:latest
-#     container_name: ttrss-mercury
-#     expose:
-#       - 3000
-#     restart: always
+  service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
+    image: wangqiru/mercury-parser-api:latest
+    container_name: ttrss-mercury
+    expose:
+      - 3000
+    restart: always
     
 #   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page #繁体到中文插件，不需要的话可以删除
 #     image: wangqiru/opencc-api-server:latest
