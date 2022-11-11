@@ -53,15 +53,15 @@ services:
       - 80
     ports:
         - '1200:80'
-#     environment:
-#         NODE_ENV: production
+    environment:
+        NODE_ENV: production
 #         CACHE_TYPE: redis
 #         REDIS_URL: 'redis://redis:6379/'
 #         PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'
 #         PROXY_PROTOCOL: socks
 #         PROXY_HOST: xxxxrss
 #         PROXY_PORT: 1080
-#         PORT: 80
+        PORT: 80
 #     depends_on:
 #         - redis
 #         - browserless
