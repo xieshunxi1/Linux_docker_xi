@@ -36,8 +36,8 @@ services:
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
     container_name: ttrss-mercury
-    ports:
-      - 3000:3000 # 开放端口给外部使用
+#     ports:
+#       - 3000:3000 # 开放端口给外部使用
     expose:
       - 3001
     restart: always
