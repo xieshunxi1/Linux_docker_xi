@@ -55,8 +55,8 @@ services:
         - 1200:80
     environment:
         NODE_ENV: production
-#         CACHE_TYPE: redis
-#         REDIS_URL: 'redis://redis:6379/'
+        CACHE_TYPE: redis
+        REDIS_URL: 'redis://redis:6379/'
 #         PUPPETEER_WS_ENDPOINT: 'ws://browserless:3000'
 #         PROXY_PROTOCOL: socks
 #         PROXY_HOST: xxxxrss
@@ -70,11 +70,11 @@ services:
 #       image: browserless/chrome
 #       restart: always
       
-#   redis:
-#       image: redis:alpine
-#       restart: always
-#       volumes:
-#         - redis-data:/data
+  redis:
+      image: redis:alpine
+      restart: always
+      volumes:
+        - redis-data:/data
         
 volumes:
     redis-data:
