@@ -12,7 +12,7 @@ services:
 #     ports:
 #       - 15432:5432 # 开放端口给外部使用
     expose:
-      - 3001  #将当前容器的端口3001暴露给link到本容器的容器。
+      - 5433  #将当前容器的端口3001暴露给link到本容器的容器。
       
   service.rss:
     image: wangqiru/ttrss:latest
@@ -23,7 +23,7 @@ services:
       - SELF_URL_PATH=http://10.60.32.3:181/ # 修改为你自己的域名+端口
       - ALLOW_PORTS=1200 # 加入这个配置,才能访问rsshub默认的1200
       - DB_HOST=database.postgres
-      - DB_PORT=5432
+      - DB_PORT=5433
       - DB_NAME=ttrss
       - DB_USER=postgres
       - DB_PASS=ttrssxi # 修改为上面设置的数据库密码
