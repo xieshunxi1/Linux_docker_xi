@@ -9,8 +9,10 @@ services:
     volumes:
       - /volume1/docker/ttrss1/data/alpine/:/var/lib/postgresql/data # persist postgres data to ~/postgres/data/ on the host
     restart: always
-    ports:
-      - 15432:5432 # 开放端口给外部使用
+#     ports:
+#       - 15432:5432 # 开放端口给外部使用
+    expose:
+      - 3001  #将当前容器的端口3001暴露给link到本容器的容器。
       
   service.rss:
     image: wangqiru/ttrss:latest
@@ -46,7 +48,7 @@ services:
 #     environment:
 #       NODE_ENV: production
 #     expose:
-#       - 3000
+#       - 3000  #将当前容器的端口3000和8000暴露给link到本容器的容器。
 #     restart: always  
     
   service.rsshub:
