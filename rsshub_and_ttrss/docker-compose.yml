@@ -63,7 +63,7 @@ services:
 #         PROXY_PROTOCOL: socks
 #         PROXY_HOST: xxxxrss
 #         PROXY_PORT: 1080
-#         PORT: 80
+        PORT: 80
 #     depends_on:
 #         - redis
 #         - browserless
