@@ -4,15 +4,18 @@ services:
   database.postgres:
     image: postgres:12.4-alpine
     container_name: ttrss-postgres
-    environment:
-      - POSTGRES_PASSWORD=ttrssxi # please change the password
-    volumes:
-      - /volume1/docker/ttrss1/data/alpine/:/var/lib/postgresql/data # persist postgres data to ~/postgres/data/ on the host
     restart: always
-#     ports:
-#       - 15432:5432 # 开放端口给外部使用
-    expose:
-      - 5433  #将当前容器的端口3001暴露给link到本容器的容器。
+    environment:
+      - PGDATA=/var/lib/postgresql/data   # 可自行设置，注释掉这项，则为默认数据文件为/var/lib/postgresql/data
+      - POSTGRES_USER=postgres1     #用户名 可自行更改,注释掉这项，则为默认用户名postgres
+      - POSTGRES_PASSWORD=ttrssxi    #密码 可自行更改
+    #   - POSTGRES_DB=inventory
+    volumes:
+      - ./dataxi:/var/lib/postgresql/data   # 将docker文件夹/var/lib/postgresql/data挂载到宿主机文件夹的相对路径/dataxi,“./”表示运行命令所在文件夹路径，“~/”ssh命令所在用户目录，不加为绝对路径
+    ports:
+      - 15432:5432 # 开放端口给外部使用
+    # expose:
+    #   - 5432  #将当前容器的端口3001暴露给link到本容器的容器。
       
   service.rss:
     image: wangqiru/ttrss:latest
@@ -20,26 +23,27 @@ services:
     ports:
       - 181:80 # 冒号之前是你需要访问的端口，后面的80不需要修改
     environment:
+      - TZ=Asia/Shanghai
       - SELF_URL_PATH=http://10.60.32.3:181/ # 修改为你自己的域名+端口
       - ALLOW_PORTS=1200 # 加入这个配置,才能访问rsshub默认的1200
       - DB_HOST=database.postgres
-      - DB_PORT=5433
+      - DB_PORT=5432
       - DB_NAME=ttrss
-      - DB_USER=postgres
+      - DB_USER=postgres1 
       - DB_PASS=ttrssxi # 修改为上面设置的数据库密码
       - ENABLE_PLUGINS=auth_internal,fever # auth_internal is required. Plugins enabled here will be enabled for all users as system plugins
     stdin_open: true
     tty: true
     restart: always
-    command: sh -c 'sh /wait-for.sh database.postgres:5432 -- php /configure-db.php && exec s6-svscan /etc/s6/'
+    # command: sh -c 'sh /wait-for.sh database.postgres:5432 -- php /configure-db.php && exec s6-svscan /etc/s6/'
     
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
     image: wangqiru/mercury-parser-api:latest
     container_name: ttrss-mercury
-#     ports:
-#       - 3000:3000 # 开放端口给外部使用
-    expose:
-      - 3001
+    ports:
+      - 3000:3000 # 开放端口给外部使用
+    # expose:
+    #   - 3001
     restart: always
     
 #   service.opencc: # set OpenCC API endpoint to `service.opencc:3000` on TTRSS plugin setting page #繁体到中文插件，不需要的话可以删除
