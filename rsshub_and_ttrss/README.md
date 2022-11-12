@@ -1,5 +1,5 @@
 
-## 一键安装命令
+## Ubuntu一键安装命令
 
 sudo mkdir -p /etc/docker_xi/rsshub_and_ttrss && cd /etc/docker_xi/rsshub_and_ttrss && sudo wget  -O docker-compose.yml https://raw.githubusercontent.com/xieshunxi1/Linux_docker_xi/main/rsshub_and_ttrss/docker-compose.yml && sudo docker-compose up -d
 
