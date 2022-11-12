@@ -31,7 +31,7 @@ services:
       - DB_NAME=ttrss
       - DB_USER=postgres1 
       - DB_PASS=ttrssxi # 修改为上面设置的数据库密码
-      - ENABLE_PLUGINS=auth_internal,fever # auth_internal is required. Plugins enabled here will be enabled for all users as system plugins
+      - ENABLE_PLUGINS=auth_internal,fever,mercury_fulltext,share,bookmarklets #默认开启的插件
     stdin_open: true
     tty: true
     restart: always
