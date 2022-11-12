@@ -35,6 +35,8 @@ services:
     stdin_open: true
     tty: true
     restart: always
+    depends_on:   #本服务启动，需要依赖哪些别的服务，这些服务就会先于该服务启动
+        - postgres 
     # command: sh -c 'sh /wait-for.sh database.postgres:5432 -- php /configure-db.php && exec s6-svscan /etc/s6/'
     
   service.mercury: # set Mercury Parser API endpoint to `service.mercury:3000` on TTRSS plugin setting page
