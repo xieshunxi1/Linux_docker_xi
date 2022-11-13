@@ -62,7 +62,7 @@ services:
     
   service.rsshub:
     image: diygod/rsshub
-    container_name: rsshub
+    container_name: rsshub-app
     restart: always
     expose:
       - 80
