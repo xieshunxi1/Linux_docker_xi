@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  freshrss-db:
+    image: 	postgres:12.4-alpine           # 官方示例中给出了 MySQL/MarriaDB/PostgreSQL 三种方案
+    container_name: freshrss-db
+    hostname: freshrss-db
+    restart: unless-stopped
+    ports:
+      - 25432:5432 # 开放端口给外部使用
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres2       # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_PASSWORD: freshrssxi   # 数据库配置，请自行修改、避免使用默认配置
+      POSTGRES_DB: freshrss         # 数据库配置，请自行修改、避免使用默认配置
+
+  freshrss-app:
+    image: freshrss/freshrss:latest
+    container_name: freshrss-app
+    hostname: freshrss-app
+    restart: unless-stopped
+    ports:
+      - "3000:80"                   # 映射端口
+    links:
+        - freshrss-db:db
+    depends_on:
+      - freshrss-db
+    volumes:
+      - ./data:/var/www/FreshRSS/data
+      - ./extensions:/var/www/FreshRSS/extensions
+    environment:
+      CRON_MIN: '*/20'             # RSS 刷新周期，单位为分钟，*/20 表示每 20 分钟刷新一次
+      TZ: Asia/Shanghai            # 时区
+
+volumes:
+  db:
+  data:
+  extensions:
