@@ -3,7 +3,7 @@ version: '3'
 services:
   huginn:
     image: huginn/huginn:latest
-    container_name: huginn
+    container_name: huginn-app
     restart: always
     ports:
       - "3000:3000"  # 对外的 Web 端口
@@ -21,6 +21,7 @@ services:
 
   mail:
     image: namshi/smtp
+    container_name: huginn-email
     restart: always
     environment:
       RELAY_NETWORKS: :0.0.0.0/0  # 允许任何人发送邮件
