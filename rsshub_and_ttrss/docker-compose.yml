@@ -27,7 +27,7 @@ services:
       - service.mercury:mercury.api
     environment:
       - TZ=Asia/Shanghai
-      - SELF_URL_PATH=http://10.60.5.119:181/ # 修改为你自己的域名+端口
+      - SELF_URL_PATH=http://192.168.5.119:181/ # 修改为你自己的域名+端口
       - ALLOW_PORTS=1200,3000 # 加入这个配置,才能访问rsshub默认的1200
       - DB_HOST=database.postgres
       - DB_PORT=5432
