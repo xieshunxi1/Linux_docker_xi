@@ -1,5 +1,4 @@
 version: "3"
-# 将rsshub和ttrss一起部署，并通过容器间的80端口打通访问
 services:
   database.postgres:
     image: postgres:12.4-alpine
@@ -64,8 +63,6 @@ services:
     image: diygod/rsshub
     container_name: rsshub-app
     restart: always
-    expose:
-      - 80
     ports:
         - 1200:80
     environment:
