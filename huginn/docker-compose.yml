@@ -10,11 +10,11 @@ services:
     volumes:
       - huginn-data:/var/lib/mysql  # 数据保存到 huginn-data 卷中
     environment:
-      EMAIL_FROM_ADDRESS: "2938500754@qq.com"  # 发信人地址
+      EMAIL_FROM_ADDRESS: "user@qq.com"  # 发信人地址
       TIME_ZONE: "Beijing"  # 时区一定要设正确！
       SMTP_DOMAIN: "qq.com"
-      SMTP_USER_NAME: "2938500754@qq.com"
-      SMTP_PASSWORD: "klcdfdnlcqmkdech"
+      SMTP_USER_NAME: "user@qq.com"
+      SMTP_PASSWORD: "password"
       SMTP_PORT: "587"
       SMTP_SERVER: "smtp.qq.com"
       SMTP_AUTENTICATION: "none" # 使用自建的 smtp 服务，无需验证
