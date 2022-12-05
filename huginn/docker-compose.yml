@@ -12,6 +12,7 @@ services:
     environment:
       EMAIL_FROM_ADDRESS: "2938500754@qq.com"  # 发信人地址
       TIME_ZONE: "Beijing"  # 时区一定要设正确！
+      SMTP_DOMAIN: "qq.com"
       SMTP_USER_NAME: "2938500754@qq.com"
       SMTP_PASSWORD: "klcdfdnlcqmkdech"
       SMTP_PORT: "465"
