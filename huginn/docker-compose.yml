@@ -16,7 +16,7 @@ services:
       SMTP_PASSWORD: "klcdfdnlcqmkdech"
       SMTP_PORT: "465"
       SMTP_SERVER: "smtp.qq.com"
-      # SMTP_AUTENTICATION: .com  # 使用自建的 smtp 服务，无需验证
+      SMTP_AUTENTICATION: "none" # 使用自建的 smtp 服务，无需验证
       SMTP_ENABLE_STARTTLS_AUTO: "true"
 
   mail:
