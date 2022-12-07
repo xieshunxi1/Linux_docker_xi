@@ -36,8 +36,8 @@ services:
       - ENABLE_PLUGINS=auth_internal,fever,mercury_fulltext,share,bookmarklets,ttrss-mailer-smtp #默认开启的插件
       
       - SMTP_SERVER=smtp.qq.com:587
-      - SMTP_LOGIN=2938500754@qq.com
-      - SMTP_PASSWORD=klcdfdnlcqmkdech
+      - SMTP_LOGIN=user@qq.com
+      - SMTP_PASSWORD=password
       - SMTP_SECURE=ssl
       
     stdin_open: true
