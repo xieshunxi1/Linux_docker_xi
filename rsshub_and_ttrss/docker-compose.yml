@@ -35,10 +35,10 @@ services:
       - DB_PASS=ttrssxi # 修改为上面设置的数据库密码
       - ENABLE_PLUGINS=auth_internal,fever,mercury_fulltext,share,bookmarklets #默认开启的插件
       
-      - SMTP_SERVER=smtp.qq.com:587
-      - SMTP_LOGIN=user@qq.com
-      - SMTP_PASSWORD=password
-      - SMTP_SECURE=ssl
+      #- SMTP_SERVER=smtp.qq.com:587
+      #- SMTP_LOGIN=user@qq.com
+      #- SMTP_PASSWORD=password
+      #- SMTP_SECURE=ssl
       
     stdin_open: true
     tty: true
@@ -88,12 +88,12 @@ services:
 #       image: browserless/chrome
 #       restart: always
   
-#   mail:
-#     image: namshi/smtp
-#     container_name: 'mail'
-#     restart: always
-#     environment:
-#       RELAY_NETWORKS: :0.0.0.0/0  # 允许任何人发送邮件
+  mail:
+    image: namshi/smtp
+    container_name: ttrss-smtp
+    restart: always
+    environment:
+      RELAY_NETWORKS: :0.0.0.0/0  # 允许任何人发送邮件
       
 #   redis:
 #       image: redis:alpine  
