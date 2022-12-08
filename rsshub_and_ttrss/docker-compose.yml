@@ -24,7 +24,7 @@ services:
     links:
       - service.rsshub:rsshub.app  #可以用别名rsshub.app代表该容器的ip，即http://rsshub.app:80
       - service.mercury:mercury.api
-      - mail:mail
+      - mail:localhost
     environment:
       #- TZ=Asia/Shanghai
       - SELF_URL_PATH=http://192.168.5.138:181/ # 修改为你自己的域名+端口
@@ -38,7 +38,7 @@ services:
       
       - TIME_ZONE=Beijing  # 时区一定要设正确！
       - EMAIL_FROM_ADDRESS=ttrss@xi.com  # 发信人地址
-      - SMTP_SERVER=mail
+      - SMTP_SERVER=localhost
       - SMTP_PORT=25
       - SMTP_LOGIN=none
       - SMTP_PASSWORD=none
