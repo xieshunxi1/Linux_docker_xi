@@ -10,19 +10,18 @@ services:
     volumes:
       - huginn-data:/var/lib/mysql  # 数据保存到 huginn-data 卷中
     environment:
-      EMAIL_FROM_ADDRESS: "user@qq.com"  # 发信人地址
+      EMAIL_FROM_ADDRESS: "miniPC@xi.com"  # 发信人地址
       TIME_ZONE: "Beijing"  # 时区一定要设正确！
-      SMTP_DOMAIN: "qq.com"
-      SMTP_USER_NAME: "user@qq.com"
-      SMTP_PASSWORD: "password"
-      SMTP_PORT: "587"
-      SMTP_SERVER: "smtp.qq.com"
-      SMTP_AUTENTICATION: "none" # 使用自建的 smtp 服务，无需验证
+      SMTP_USER_NAME: "none"
+      SMTP_PASSWORD: "none"
+      SMTP_PORT: "25"
+      SMTP_SERVER: "mail"
+      SMTP_AUTENTICATION: "none"  # 使用自建的 smtp 服务，无需验证
       SMTP_ENABLE_STARTTLS_AUTO: "true"
 
   mail:
     image: namshi/smtp
-    container_name: huginn-email
+    container_name: huginn-smtp
     restart: always
     environment:
       RELAY_NETWORKS: :0.0.0.0/0  # 允许任何人发送邮件
