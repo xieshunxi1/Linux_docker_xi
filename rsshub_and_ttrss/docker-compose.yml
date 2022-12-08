@@ -38,8 +38,8 @@ services:
       
       - TIME_ZONE="Beijing"  # 时区一定要设正确！
       - EMAIL_FROM_ADDRESS="ttrss@xi.com"  # 发信人地址
-      - SMTP_SERVER="mail:25"
-      #- SMTP_PORT="26"
+      - SMTP_SERVER="mail"
+      - SMTP_PORT="25"
       - SMTP_LOGIN="none"
       - SMTP_PASSWORD="none"
       - SMTP_AUTENTICATION="none"  # 使用自建的 smtp 服务，无需验证
