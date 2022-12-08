@@ -25,7 +25,7 @@ services:
       - service.rsshub:rsshub.app  #可以用别名rsshub.app代表该容器的ip，即http://rsshub.app:80
       - service.mercury:mercury.api
     environment:
-      - TZ=Asia/Shanghai
+      #- TZ=Asia/Shanghai
       - SELF_URL_PATH=http://192.168.5.138:181/ # 修改为你自己的域名+端口
       - ALLOW_PORTS=1200,3000 # 加入这个配置,才能访问rsshub默认的1200
       - DB_HOST=database.postgres
@@ -35,9 +35,12 @@ services:
       - DB_PASS=ttrssxi # 修改为上面设置的数据库密码
       - ENABLE_PLUGINS=auth_internal,fever,mercury_fulltext,share,bookmarklets #默认开启的插件
       
-      #- SMTP_SERVER=smtp.qq.com:587
-      #- SMTP_LOGIN=user@qq.com
-      #- SMTP_PASSWORD=password
+      - TIME_ZONE="Beijing"  # 时区一定要设正确！
+      - SMTP_SERVER="mail"
+      - SMTP_PORT="25"
+      - SMTP_LOGIN="none"
+      - SMTP_PASSWORD="none"
+      - SMTP_AUTENTICATION="none"  # 使用自建的 smtp 服务，无需验证
       #- SMTP_SECURE=ssl
       
     stdin_open: true
