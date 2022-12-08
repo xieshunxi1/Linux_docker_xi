@@ -24,6 +24,7 @@ services:
     links:
       - service.rsshub:rsshub.app  #可以用别名rsshub.app代表该容器的ip，即http://rsshub.app:80
       - service.mercury:mercury.api
+      - mail:mail
     environment:
       #- TZ=Asia/Shanghai
       - SELF_URL_PATH=http://192.168.5.138:181/ # 修改为你自己的域名+端口
