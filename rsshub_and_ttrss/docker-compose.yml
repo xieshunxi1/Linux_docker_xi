@@ -36,6 +36,7 @@ services:
       - ENABLE_PLUGINS=auth_internal,fever,mercury_fulltext,share,bookmarklets #默认开启的插件
       
       - TIME_ZONE="Beijing"  # 时区一定要设正确！
+      - EMAIL_FROM_ADDRESS="ttrss@xi.com"  # 发信人地址
       - SMTP_SERVER="mail"
       - SMTP_PORT="25"
       - SMTP_LOGIN="none"
