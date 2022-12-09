@@ -32,7 +32,7 @@ services:
       - RSSANT_PG_USER=rssant
       - RSSANT_PG_PASSWORD=rssant
     logging:
-      driver: “json-file”
+      driver: json-file
       options:
         max-size: 50m
         max-file: 10
