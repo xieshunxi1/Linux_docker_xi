@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  rssant:
+    image: guyskk/rssant:latest
+    container_name: rssant-app
+    restart: always
+    ports:
+      - 182:80 # 冒号之前是你需要访问的端口，后面的80不需要修改
+    volumes:
+      - rssant-data:/app/data
+      - rssant-postgres-data:/var/lib/postgresql/11/main 
+      - rssant-postgres-logs:/var/log/postgresql
+    environment:
+      - RSSANT_DEBUG=0      # 默认关闭DEBUG，请勿在开发测试之外开启DEBUG
+      - RSSANT_SECRET_KEY=SECRET    # 请随机生成一个字符串
+      - RSSANT_ROOT_URL=http://192.168.5.130:182     # 应用的访问地址
+      - RSSANT_CHECK_FEED_MINUTES=30    # 检查订阅的时间间隔，默认30分钟
+      # SMTP邮件功能，不需要注册功能可留空
+      - RSSANT_ADMIN_EMAIL=
+      - RSSANT_SMTP_ENABLE=false
+      - RSSANT_SMTP_HOST=smtp.qq.com
+      - RSSANT_SMTP_PORT=465
+      - RSSANT_SMTP_USE_SSL=true
+      - RSSANT_SMTP_USERNAME=
+      - RSSANT_SMTP_PASSWORD=
+
+      # 以下配置保持不动
+      - RSSANT_SCHEDULER_NETWORK=rssant
+      - RSSANT_PG_DB=rssant
+      - RSSANT_PG_HOST=localhost
+      - RSSANT_PG_USER=rssant
+      - RSSANT_PG_PASSWORD=rssant
+    logging:
+      driver: “json-file”
+      options:
+        max-size: 50m
+        max-file: 10
+    
+volumes:
+  rssant-data:  
+  rssant-postgres-data:
+  rssant-postgres-logs:
+      
