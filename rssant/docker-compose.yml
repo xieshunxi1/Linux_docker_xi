@@ -28,7 +28,7 @@ services:
       # 以下配置保持不动
       - RSSANT_SCHEDULER_NETWORK=rssant
       - RSSANT_PG_DB=rssant
-      - RSSANT_PG_HOST=localhost
+      # - RSSANT_PG_HOST=localhost
       - RSSANT_PG_USER=rssant
       - RSSANT_PG_PASSWORD=rssant
     logging:
