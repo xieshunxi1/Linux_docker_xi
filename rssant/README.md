@@ -1,0 +1,1 @@
+sudo mkdir -p /etc/docker_xi/rssant && cd /etc/docker_xi/rssant && sudo wget -O docker-compose.yml https://raw.githubusercontent.com/xieshunxi1/Linux_docker_xi/main/rssant/docker-compose.yml && sudo docker-compose up -d
